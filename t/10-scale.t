@@ -25,10 +25,6 @@ isa_ok( $scaled4x, 'GD::Image' );
 
 ok( !( $image2x->compare( $scaled2x ) & GD_CMP_IMAGE ), 'scale2x' );
 
-TODO: {
-	local $TODO = 'scale3x differs for some reason';
-
-	ok( !( $image3x->compare( $scaled3x ) & GD_CMP_IMAGE ), 'scale3x' );
-};
+ok( !( $image3x->compare( $scaled3x ) & GD_CMP_IMAGE ), 'scale3x' );
 
 ok( !( $image4x->compare( $scaled4x ) & GD_CMP_IMAGE ), 'scale4x' );

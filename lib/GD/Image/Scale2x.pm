@@ -36,7 +36,7 @@ some example results by looking through the test directory.
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 METHODS
 
@@ -196,7 +196,7 @@ sub _calculate_scale {
 
 	my @E;
 	if( $scale == 2 ) {
-		if( $pixels->[ 1 ] != $pixels->[ 7 ] and $pixels->[ 3 ] != $pixels->[ 5 ] ) {
+		if( $pixels->[ 1 ] != $pixels->[ 7 ] && $pixels->[ 3 ] != $pixels->[ 5 ] ) {
 			$E[ 0 ] = ( $pixels->[ 3 ] == $pixels->[ 1 ] ? $pixels->[ 3 ] : $pixels->[ 4 ] );
 			$E[ 1 ] = ( $pixels->[ 1 ] == $pixels->[ 5 ] ? $pixels->[ 5 ] : $pixels->[ 4 ] );
 			$E[ 2 ] = ( $pixels->[ 3 ] == $pixels->[ 7 ] ? $pixels->[ 3 ] : $pixels->[ 4 ] );
@@ -207,29 +207,29 @@ sub _calculate_scale {
 		}
 	}
 	elsif( $scale == 3 ) {
-		if( $pixels->[ 1 ] != $pixels->[ 7 ] and $pixels->[ 3 ] != $pixels->[ 5 ] ) {
+		if( $pixels->[ 1 ] != $pixels->[ 7 ] && $pixels->[ 3 ] != $pixels->[ 5 ] ) {
 			$E[ 0 ] = ( $pixels->[ 3 ] == $pixels->[ 1 ] ? $pixels->[ 3 ] : $pixels->[ 4 ] );
 			$E[ 1 ] = (
-					( $pixels->[ 3 ] == $pixels->[ 1 ] and $pixels->[ 4 ] != $pixels->[ 2 ] ) ||
-					( $pixels->[ 1 ] == $pixels->[ 5 ] and $pixels->[ 4 ] != $pixels->[ 0 ] )
+					( $pixels->[ 3 ] == $pixels->[ 1 ] && $pixels->[ 4 ] != $pixels->[ 2 ] ) ||
+					( $pixels->[ 1 ] == $pixels->[ 5 ] && $pixels->[ 4 ] != $pixels->[ 0 ] )
 					? $pixels->[ 1 ] : $pixels->[ 4 ]
 			);
 			$E[ 2 ] = ( $pixels->[ 1 ] == $pixels->[ 5 ] ? $pixels->[ 5 ] : $pixels->[ 4 ] );
 			$E[ 3 ] = (
-					( $pixels->[ 3 ] == $pixels->[ 1 ] and $pixels->[ 4 ] != $pixels->[ 6 ] ) ||
-					( $pixels->[ 3 ] == $pixels->[ 1 ] and $pixels->[ 4 ] != $pixels->[ 0 ] )
+					( $pixels->[ 3 ] == $pixels->[ 1 ] && $pixels->[ 4 ] != $pixels->[ 6 ] ) ||
+					( $pixels->[ 3 ] == $pixels->[ 7 ] && $pixels->[ 4 ] != $pixels->[ 0 ] )
 					? $pixels->[ 3 ] : $pixels->[ 4 ]
 			);
 			$E[ 4 ] = $pixels->[ 4 ];
 			$E[ 5 ] = (
-					( $pixels->[ 1 ] == $pixels->[ 5 ] and $pixels->[ 4 ] != $pixels->[ 8 ] ) ||
-					( $pixels->[ 7 ] == $pixels->[ 5 ] and $pixels->[ 4 ] != $pixels->[ 2 ] )
+					( $pixels->[ 1 ] == $pixels->[ 5 ] && $pixels->[ 4 ] != $pixels->[ 8 ] ) ||
+					( $pixels->[ 7 ] == $pixels->[ 5 ] && $pixels->[ 4 ] != $pixels->[ 2 ] )
 					? $pixels->[ 5 ] : $pixels->[ 4 ]
 			);
 			$E[ 6 ] = ( $pixels->[ 3 ] == $pixels->[ 7 ] ? $pixels->[ 3 ] : $pixels->[ 4 ] );
 			$E[ 7 ] = (
-					( $pixels->[ 3 ] == $pixels->[ 7 ] and $pixels->[ 4 ] != $pixels->[ 8 ] ) ||
-					( $pixels->[ 7 ] == $pixels->[ 5 ] and $pixels->[ 4 ] != $pixels->[ 6 ] )
+					( $pixels->[ 3 ] == $pixels->[ 7 ] && $pixels->[ 4 ] != $pixels->[ 8 ] ) ||
+					( $pixels->[ 7 ] == $pixels->[ 5 ] && $pixels->[ 4 ] != $pixels->[ 6 ] )
 					? $pixels->[ 7 ] : $pixels->[ 4 ]
 			);
 			$E[ 8 ] = ( $pixels->[ 7 ] == $pixels->[ 5 ] ? $pixels->[ 5 ] : $pixels->[ 4 ] );

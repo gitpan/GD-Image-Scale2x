@@ -22,6 +22,7 @@ specify an integer value by which your image should be scaled (default: 2). Exam
 use strict;
 use warnings;
 
+use GD;
 use GD::Image::Scale2x;
 use Getopt::Std;
 use Pod::Usage;
@@ -35,7 +36,7 @@ my $file = shift;
 
 pod2usage( { verbose => 1 } ) if !defined( $file );
 
-my $image = GD::Image->new( shift );
+my $image = GD::Image->new( $file );
 my $scale = $options{ x } || 2;
 $scale    = sprintf( 'scale%sx', $scale );
 
