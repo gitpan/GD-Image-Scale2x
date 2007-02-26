@@ -1,8 +1,10 @@
 bin/scale2x
+Build.PL
 Changes
 lib/GD/Image/Scale2x.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
+META.yml
 README
 t/01-use.t
 t/10-scale.t
@@ -12,4 +14,3 @@ t/mslug2-1.png
 t/mslug2-2.png
 t/mslug2-3.png
 t/mslug2-4.png
-META.yml                                 Module meta-data (added by MakeMaker)

@@ -1,12 +1,23 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         GD-Image-Scale2x
-version:      0.02
-version_from: lib/GD/Image/Scale2x.pm
-installdirs:  site
+---
+name: GD-Image-Scale2x
+version: 0.03
+author:
+  - 'Brian Cassidy <bricas@cpan.org>'
+abstract: Implementation of the Scale2x algorithm for the GD library
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
 requires:
-    GD:                            0
-    Test::More:                    0
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.17
+  GD: 0
+build_requires:
+  Test::More: 0
+provides:
+  GD::Image:
+    file: lib/GD/Image/Scale2x.pm
+  GD::Image::Scale2x:
+    file: lib/GD/Image/Scale2x.pm
+    version: 0.03
+generated_by: Module::Build version 0.2806
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
