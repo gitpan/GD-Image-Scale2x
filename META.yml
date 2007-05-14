@@ -1,6 +1,6 @@
 ---
 name: GD-Image-Scale2x
-version: 0.04
+version: 0.05
 author:
   - 'Brian Cassidy <bricas@cpan.org>'
 abstract: Implementation of the Scale2x algorithm for the GD library
@@ -17,7 +17,7 @@ provides:
     file: lib/GD/Image/Scale2x.pm
   GD::Image::Scale2x:
     file: lib/GD/Image/Scale2x.pm
-    version: 0.04
+    version: 0.05
 generated_by: Module::Build version 0.2807
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
