@@ -36,7 +36,7 @@ some example results by looking through the test directory.
 use strict;
 use warnings;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 METHODS
 
@@ -62,6 +62,8 @@ Same as scale2x done twice over.
 =head1 SEE ALSO
 
 =over 4 
+
+=item * Algorithm::Scale2x
 
 =item * GD
 
@@ -90,6 +92,8 @@ package GD::Image;
 
 use strict;
 use warnings;
+
+use Algorithm::Scale2x ();
 
 my $result = {
     2 => [
@@ -172,7 +176,8 @@ sub _scale {
                 $self->getPixel( $x_plus, $y_plus )
             );
 
-            my @E = _calculate_scale( $scale, \@pixels );
+            my $code = Algorithm::Scale2x->can( "scale${scale}x" );
+            my @E = $code->( @pixels );
 
             my $scaledx = $x * $scale;
             my $scaledy = $y * $scale;
@@ -188,58 +193,6 @@ sub _scale {
     }
 
     return $image;
-}
-
-sub _calculate_scale {
-    my $scale  = shift;
-    my $pixels = shift;
-
-    my @E;
-    if( $scale == 2 ) {
-        if( $pixels->[ 1 ] != $pixels->[ 7 ] && $pixels->[ 3 ] != $pixels->[ 5 ] ) {
-            $E[ 0 ] = ( $pixels->[ 3 ] == $pixels->[ 1 ] ? $pixels->[ 3 ] : $pixels->[ 4 ] );
-            $E[ 1 ] = ( $pixels->[ 1 ] == $pixels->[ 5 ] ? $pixels->[ 5 ] : $pixels->[ 4 ] );
-            $E[ 2 ] = ( $pixels->[ 3 ] == $pixels->[ 7 ] ? $pixels->[ 3 ] : $pixels->[ 4 ] );
-            $E[ 3 ] = ( $pixels->[ 7 ] == $pixels->[ 5 ] ? $pixels->[ 5 ] : $pixels->[ 4 ] );
-        }
-        else {
-            @E = ( $pixels->[ 4 ] ) x 4;
-        }
-    }
-    elsif( $scale == 3 ) {
-        if( $pixels->[ 1 ] != $pixels->[ 7 ] && $pixels->[ 3 ] != $pixels->[ 5 ] ) {
-            $E[ 0 ] = ( $pixels->[ 3 ] == $pixels->[ 1 ] ? $pixels->[ 3 ] : $pixels->[ 4 ] );
-            $E[ 1 ] = (
-                    ( $pixels->[ 3 ] == $pixels->[ 1 ] && $pixels->[ 4 ] != $pixels->[ 2 ] ) ||
-                    ( $pixels->[ 1 ] == $pixels->[ 5 ] && $pixels->[ 4 ] != $pixels->[ 0 ] )
-                    ? $pixels->[ 1 ] : $pixels->[ 4 ]
-            );
-            $E[ 2 ] = ( $pixels->[ 1 ] == $pixels->[ 5 ] ? $pixels->[ 5 ] : $pixels->[ 4 ] );
-            $E[ 3 ] = (
-                    ( $pixels->[ 3 ] == $pixels->[ 1 ] && $pixels->[ 4 ] != $pixels->[ 6 ] ) ||
-                    ( $pixels->[ 3 ] == $pixels->[ 7 ] && $pixels->[ 4 ] != $pixels->[ 0 ] )
-                    ? $pixels->[ 3 ] : $pixels->[ 4 ]
-            );
-            $E[ 4 ] = $pixels->[ 4 ];
-            $E[ 5 ] = (
-                    ( $pixels->[ 1 ] == $pixels->[ 5 ] && $pixels->[ 4 ] != $pixels->[ 8 ] ) ||
-                    ( $pixels->[ 7 ] == $pixels->[ 5 ] && $pixels->[ 4 ] != $pixels->[ 2 ] )
-                    ? $pixels->[ 5 ] : $pixels->[ 4 ]
-            );
-            $E[ 6 ] = ( $pixels->[ 3 ] == $pixels->[ 7 ] ? $pixels->[ 3 ] : $pixels->[ 4 ] );
-            $E[ 7 ] = (
-                    ( $pixels->[ 3 ] == $pixels->[ 7 ] && $pixels->[ 4 ] != $pixels->[ 8 ] ) ||
-                    ( $pixels->[ 7 ] == $pixels->[ 5 ] && $pixels->[ 4 ] != $pixels->[ 6 ] )
-                    ? $pixels->[ 7 ] : $pixels->[ 4 ]
-            );
-            $E[ 8 ] = ( $pixels->[ 7 ] == $pixels->[ 5 ] ? $pixels->[ 5 ] : $pixels->[ 4 ] );
-        }
-        else {
-            @E = ( $pixels->[ 4 ] ) x 9;
-        }
-    }
-
-    return @E;
 }
 
 1;

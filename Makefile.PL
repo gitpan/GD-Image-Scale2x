@@ -11,6 +11,7 @@ WriteMakefile
           'VERSION_FROM' => 'lib/GD/Image/Scale2x.pm',
           'PREREQ_PM' => {
                            'Test::More' => 0,
+                           'Algorithm::Scale2x' => 0,
                            'GD' => 0
                          }
         )

@@ -48,6 +48,7 @@ METHODS
     Same as scale2x done twice over.
 
 SEE ALSO
+    * Algorithm::Scale2x
     * GD
     * http://scale2x.sourceforge.net/
 

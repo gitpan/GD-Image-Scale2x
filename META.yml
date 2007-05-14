@@ -1,6 +1,6 @@
 ---
 name: GD-Image-Scale2x
-version: 0.03
+version: 0.04
 author:
   - 'Brian Cassidy <bricas@cpan.org>'
 abstract: Implementation of the Scale2x algorithm for the GD library
@@ -8,6 +8,7 @@ license: perl
 resources:
   license: http://dev.perl.org/licenses/
 requires:
+  Algorithm::Scale2x: 0
   GD: 0
 build_requires:
   Test::More: 0
@@ -16,8 +17,8 @@ provides:
     file: lib/GD/Image/Scale2x.pm
   GD::Image::Scale2x:
     file: lib/GD/Image/Scale2x.pm
-    version: 0.03
-generated_by: Module::Build version 0.2806
+    version: 0.04
+generated_by: Module::Build version 0.2807
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2
