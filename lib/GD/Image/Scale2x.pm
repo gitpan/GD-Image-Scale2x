@@ -36,7 +36,7 @@ some example results by looking through the test directory.
 use strict;
 use warnings;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 =head1 METHODS
 
@@ -77,7 +77,7 @@ Brian Cassidy E<lt>bricas@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2008 by Brian Cassidy
+Copyright 2005-2009 by Brian Cassidy
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
@@ -125,10 +125,13 @@ sub _scale {
     }
 
     my $image   = GD::Image->new( $source_w * $scale, $source_h * $scale );
+    my $code    = Algorithm::Scale2x->can( "scale${scale}x" );
+
     my $bound_x = $source_w - 1;
     my $bound_y = $source_h - 1;
 
     my @palette;
+
     for my $y ( $source_y..$bound_y ) {
         for my $x ( $source_x..$bound_x ) {
             my $x_plus  = ( $x + 1 > $bound_x  ? $x : $x + 1 );
@@ -152,14 +155,13 @@ sub _scale {
                 $self->getPixel( $x_plus, $y_plus )
             );
 
-            my $code = Algorithm::Scale2x->can( "scale${scale}x" );
             my @E = $code->( @pixels );
 
             my $scaledx = $x * $scale;
             my $scaledy = $y * $scale;
 
             for my $y ( 0..$scale - 1 ) {
-                for $x ( 0..$scale - 1 ) {
+                for my $x ( 0..$scale - 1 ) {
                     my $E = shift @E;
                     unless( $palette[ $E ] ) {
                         $palette[ $E ] = $image->colorAllocate( $self->rgb( $E ) );

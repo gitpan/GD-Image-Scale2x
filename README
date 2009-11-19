@@ -48,15 +48,17 @@ METHODS
     Same as scale2x done twice over.
 
 SEE ALSO
-    * Algorithm::Scale2x
-    * GD
-    * http://scale2x.sourceforge.net/
+    *   Algorithm::Scale2x
+
+    *   GD
+
+    *   http://scale2x.sourceforge.net/
 
 AUTHOR
     Brian Cassidy <bricas@cpan.org>
 
 COPYRIGHT AND LICENSE
-    Copyright 2008 by Brian Cassidy
+    Copyright 2005-2009 by Brian Cassidy
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
